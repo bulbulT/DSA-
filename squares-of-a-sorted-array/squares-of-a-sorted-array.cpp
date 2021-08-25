@@ -1,15 +1,22 @@
+#include <bits/stdc++.h>
+
 class Solution {
 public:
     vector<int> sortedSquares(vector<int>& nums) {
-        int size = nums.size();
-        vector<int> squares(size);
+        vector<int> res(nums.size());
         
-        for(int i = 0; i < size; i++){
-            squares[i] = nums[i] * nums[i];
+        int i = 0;
+        int j = nums.size()-1;
+        
+        for(int k = nums.size() - 1; k >= 0; k--){
+            if(abs(nums[i]) > abs(nums[j])){
+                res[k] = nums[i] * nums[i++];
+            }
+            else{
+                res[k] = nums[j] * nums[j--];
+            }
+        
         }
-        
-        sort(squares.begin(), squares.end());
-        return squares;
-        
+        return res;
     }
 };
