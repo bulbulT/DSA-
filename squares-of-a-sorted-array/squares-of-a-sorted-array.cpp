@@ -21,7 +21,7 @@ public:
     }
 };
 
-/*
+/* 2 POINTER APPROACH
  #include <bits/stdc++.h>
 
 class Solution {
