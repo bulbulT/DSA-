@@ -1,26 +1,61 @@
 class Solution {
 public:
+    
+    int lowerbound(vector<int>& nums, int target){
+        int left = 0;
+        int right = nums.size() - 1;
+        int mid;
+        int start = -1;
+        
+        while(left <= right){
+            mid = (left + right)/2;
+            
+            if(nums[mid] == target){
+                start = mid;
+                right = mid - 1;
+            }
+            
+            if(nums[mid] > target){
+                right = mid - 1;
+            }
+            
+            if(nums[mid] < target){
+                left = mid + 1;
+            }
+        }
+       
+        return start;
+        
+    }
+    
+    int upperbound(vector<int>& nums, int target){
+        int left = 0;
+        int right = nums.size() - 1;
+        int mid;
+        int end = -1;
+        
+        while(left <= right){
+            mid = (left + right)/2;
+            
+            if(nums[mid] == target){
+                end = mid;
+                left = mid + 1;
+            }
+            
+            if(nums[mid] > target){
+                right = mid - 1;
+            }
+            
+            if(nums[mid] < target){
+                left = mid + 1;
+            }
+        }
+        return end;
+    }
     vector<int> searchRange(vector<int>& nums, int target) {
-        vector<int> res;
+        int lb = lowerbound(nums, target);
+        int ub = upperbound(nums, target);
         
-        for(int i = 0; i < nums.size(); i++){
-            if(nums[i] == target){
-                res.push_back(i);
-                break;
-            }
-        }
-        
-        for(int i = nums.size() - 1; i >= 0; i--){
-            if(nums[i] == target){
-                res.push_back(i);
-                break;
-            }
-        }
-        
-        if(!res.empty()){
-            return res;
-        }
-        else
-        return {-1, -1};
+        return {lb, ub};
     }
 };
