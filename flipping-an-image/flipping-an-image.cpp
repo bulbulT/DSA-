@@ -29,3 +29,22 @@ public:
         
     }
 };
+
+//Using the XOR operator
+class Solution {
+public:
+    vector<vector<int>> flipAndInvertImage(vector<vector<int>>& image) {
+        int rows = image.size();
+        int columns = image[0].size();
+        
+        for(int i = 0; i < rows; i++){
+            reverse(image[i].begin(), image[i].end());
+            for(int j = 0; j < columns; j++){
+                
+                image[i][j] ^= 1;
+            }
+        }
+        return image; 
+        
+    }
+};
