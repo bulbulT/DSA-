@@ -11,7 +11,6 @@ public:
                 if(visited.empty()){
                     return false;
                 }
-                
                 if(s[i] == ')' && visited.top() != '(')
                     return false;
                 
