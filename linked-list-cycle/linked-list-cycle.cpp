@@ -9,20 +9,21 @@
 class Solution {
 public:
     bool hasCycle(ListNode *head) {
-        set<ListNode*> visited;
+        if(head == NULL) return false;
         
-        ListNode* temp = head;
+        unordered_map<ListNode*, int> map;
         
-        while(temp != NULL){
-            if(visited.find(temp) != visited.end()){
+        while(head != NULL){
+            if(map.count(head) > 0){
                 return true;
             }
             else{
-                visited.insert(temp);
-                temp = temp->next; 
+                map[head] = 1;
+                head = head->next;
             }
-            
         }
+        
         return false;
+        
     }
 };
