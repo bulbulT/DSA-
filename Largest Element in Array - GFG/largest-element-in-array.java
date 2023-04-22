@@ -38,16 +38,14 @@ class Compute {
     
     public int largest(int arr[], int n)
     {
-        int res = arr[0];
-        if(arr.length < 2){
-            return res;
-        }
-        for(int i = 1; i < arr.length; i++){
-            if(arr[i] > res){
-                res = arr[i];
+        int largest = arr[0];
+        for(int i = 1; i < n; i++){
+            if(arr[i] > largest){
+                largest = arr[i];
             }
         }
-        return res;
+        
+        return largest;
         
     }
 }
